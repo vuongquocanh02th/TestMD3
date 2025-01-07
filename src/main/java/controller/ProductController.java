@@ -26,13 +26,11 @@ public class ProductController extends HttpServlet {
         String action = request.getParameter("action");
         if ("add".equals(action)) {
             request.getRequestDispatcher("/product/addProduct.jsp").forward(request, response);
-        }else if ("viewTop".equals(action)) {
+        } else if ("viewTop".equals(action)) {
             String topParam = request.getParameter("top");
-            if (topParam != null) {
-                int top = Integer.parseInt(topParam);
-                List<Product> topSellingProducts = productDAO.getTopSellingProducts(top);
-                request.setAttribute("topSellingProducts", topSellingProducts);
-            }
+            int top = Integer.parseInt(topParam);
+            List<Product> topSellingProducts = productDAO.getTopSellingProducts(top);
+            request.setAttribute("topSellingProducts", topSellingProducts);
             List<Product> productList = productDAO.getAllProducts();
             request.setAttribute("productList", productList);
             request.getRequestDispatcher("/product/productList.jsp").forward(request, response);
@@ -46,12 +44,13 @@ public class ProductController extends HttpServlet {
             List<Product> productList = productDAO.getAllProducts();
             request.setAttribute("productList", productList);
             request.getRequestDispatcher("/product/productList.jsp").forward(request, response);
-        }   else {
+        } else {
             List<Product> productList = productDAO.getAllProducts();
             request.setAttribute("productList", productList);
             request.getRequestDispatcher("/product/productList.jsp").forward(request, response);
         }
     }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");

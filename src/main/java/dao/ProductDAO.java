@@ -69,7 +69,7 @@ public class ProductDAO implements IProductDAO {
                     product.setPrice(rs.getDouble("Price"));
                     product.setDiscount(rs.getString("Discount"));
                     product.setStock(rs.getInt("Stock"));
-                    product.setOrderCount(rs.getInt("OrderCount"));
+                    //product.setOrderCount(rs.getInt("OrderCount"));
                     products.add(product);
                 }
             }
